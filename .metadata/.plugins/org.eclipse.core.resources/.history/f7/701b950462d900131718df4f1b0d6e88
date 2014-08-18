@@ -1,0 +1,107 @@
+package com.gridstone.screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.gridstone.happykoala.HappyKoala;
+
+public class MainMenu implements Screen{
+	
+	Stage stage;
+	BitmapFont font;
+	TextureAtlas atlas;
+	Skin skin;
+	TextButton button;
+	float delta;
+	HappyKoala game;
+	SpriteBatch sb;
+	
+	public MainMenu(HappyKoala game)
+	{
+		this.game = game;
+	}
+	
+	public void handleInput(){};
+	
+	public void update(float dt){
+		delta = dt;
+	};
+	
+	public void dispose(){
+		sb.dispose();
+		skin.dispose();
+		atlas.dispose();
+		stage.dispose();
+	}
+
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0,0,0,1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
+		stage.act(delta);
+		
+		sb.begin();
+		stage.draw();
+		sb.end();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		if(stage == null)
+		{
+			stage = new Stage(800, 480, true);
+		}
+		
+		stage.clear();
+		Gdx.input.setInputProcessor(stage);
+		
+		TextButtonStyle style = new TextButtonStyle();
+		style.up = skin.getDrawable("PlayButton");
+		style.down = skin.getDrawable("PlayerButtonSelected");
+		
+		button = new TextButton("", style);
+		button.setWidth(642);
+		button.setHeight(120);
+		button.setX(Gdx.graphics.getWidth() / 2 - button.getWidth() / 2);
+		button.setY(Gdx.graphics.getHeight() / 2 - button.getHeight() / 2);
+		
+		stage.addActor(button);
+		
+	}
+
+	@Override
+	public void show() {
+		
+		skin = new Skin();
+		atlas = new TextureAtlas("images/screens/menu/button.pack");
+		skin.addRegions(atlas);
+		
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	};
+}

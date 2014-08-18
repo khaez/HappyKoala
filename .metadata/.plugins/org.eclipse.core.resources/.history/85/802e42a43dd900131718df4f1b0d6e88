@@ -1,0 +1,9 @@
+package com.gridstone.states;
+
+public class Play extends GameState{
+	
+	public Play(GameStateManager gsm)
+	{
+		super(gsm);
+	}
+}

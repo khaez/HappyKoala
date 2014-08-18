@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.gridstone.screens.MainMenu"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.OrthographicCamera"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.SpriteBatch"/>
+<fullyQualifiedTypeName name="com.gridstone.happykoala.HappyKoala"/>
+<fullyQualifiedTypeName name="java.util.Stack"/>
+<fullyQualifiedTypeName name="com.gridstone.states.GameState"/>
+<fullyQualifiedTypeName name="com.gridstone.handlers.GameStateManager"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.BitmapFont"/>
+<fullyQualifiedTypeName name="com.gridstone.states.Play"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.Texture"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Stage"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.ui.Skin"/>
+<fullyQualifiedTypeName name="com.gridstone.states.Menu"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.GL10"/>
+<fullyQualifiedTypeName name="com.gridstone.screens.Splash"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.graphics.g2d.Sprite"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.Gdx"/>
+<fullyQualifiedTypeName name="aurelienribon.tweenengine.Tween"/>
+<fullyQualifiedTypeName name="aurelienribon.tweenengine.TweenEquations"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.Group"/>
+<fullyQualifiedTypeName name="com.badlogic.gdx.scenes.scene2d.InputEvent"/>
+</qualifiedTypeNameHistroy>

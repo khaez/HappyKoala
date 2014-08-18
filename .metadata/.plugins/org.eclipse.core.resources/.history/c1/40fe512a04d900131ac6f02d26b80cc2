@@ -1,0 +1,96 @@
+package com.gridstone.screens;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class Splash implements Screen {
+
+	private Game happyKoala;
+	
+	boolean splash_end;
+	
+	private SpriteBatch splashBatch;
+	private Sprite splashSprite;
+	
+	private final float SPLASH_DURATION = 3.0f;
+	private float splashTimeOut = 0;
+	
+	public Splash(Game g) {
+		happyKoala = g;
+		splash_end = false;
+	}
+	
+	@Override
+	public void render(float delta) {
+		//Gdx.app.log("Splash", "Render");
+		
+		float deltaTime = Gdx.graphics.getDeltaTime();
+		
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		splashBatch.begin();
+		splashSprite.draw(splashBatch);
+		splashBatch.end();
+
+		splashTimeOut += deltaTime;
+		if(splashTimeOut > SPLASH_DURATION) {
+			happyKoala.setScreen(new MainMenu());
+		}
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		//Gdx.app.log("Splash", "resize");
+	}
+
+	@Override
+	public void show() {
+		//Gdx.app.log("Splash", "Show");
+		
+		AssetManager assetManager = new AssetManager();
+		splashBatch = new SpriteBatch();
+		
+		assetManager.load("images/screens/splash/Splash_Screen.png",Texture.class);
+		assetManager.finishLoading();
+		
+		Texture splashTexture = assetManager.get("images/screens/splash/Splash_Screen.png",Texture.class);
+		splashSprite = new Sprite(splashTexture);
+		splashSprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	}
+
+	@Override
+	public void hide() {
+		//Gdx.app.log("Splash", "Hide");
+	}
+
+	@Override
+	public void pause() {
+		//Gdx.app.log("Splash", "pause");
+	}
+
+	@Override
+	public void resume() {
+		//Gdx.app.log("Splash", "resume");
+	}
+
+	@Override
+	public void dispose() {
+		//Gdx.app.log("Splash", "dispose");
+	}
+
+	public boolean get_splash_end()
+	{
+		if(splashTimeOut > SPLASH_DURATION)
+			splash_end = true;
+
+
+		return splash_end;
+	}
+}

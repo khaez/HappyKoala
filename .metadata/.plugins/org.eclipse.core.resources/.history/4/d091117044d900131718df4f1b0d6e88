@@ -1,0 +1,38 @@
+package com.gridstone.states;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.gridstone.handlers.GameStateManager;
+
+public class Menu extends GameState{
+	
+	Texture play_btn;
+//	Texture play_slctd_btn;
+//	Texture tutorial_btn;
+//	Texture tutorial_slctd_btn;
+//	Texture option_btn;
+//	Texture option_slctd_btn;
+//	Texture score_btn;
+//	Texture score_slctd_btn;
+	
+	play_btn = new Texture(Gdx.files.internal("images/screens/menu/PlayButton.png"));
+	
+	public Menu(GameStateManager gsm)
+	{
+		super(gsm);
+	}
+	
+	public void handleInput(){};
+	
+	public void update(float dt){};
+	
+	public void render()
+	{
+		sb.setProjectionMatrix(cam.combined);
+		sb.begin();
+		sb.draw(play_btn, 300, 300);
+		sb.end();
+	};
+	
+	public void dispose(){};
+}

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/HappyKoala/libs" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/HappyKoala/libs" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/HappyKoala/libs" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/HappyKoala/libs" recursive="false" type="SOURCES" />
+  </library>
+</component>

@@ -1,0 +1,61 @@
+
+button.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+OptionsButton
+  rotate: false
+  xy: 1, 855
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+OptionsButtonSelected
+  rotate: false
+  xy: 1, 733
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+PlayButton
+  rotate: false
+  xy: 1, 611
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+PlayButtonSelected
+  rotate: false
+  xy: 1, 489
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+ScoreButton
+  rotate: false
+  xy: 1, 367
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+ScoreButtonSelected
+  rotate: false
+  xy: 1, 245
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+TutorialButtonSelected
+  rotate: false
+  xy: 1, 123
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1
+TutorialsButtons
+  rotate: false
+  xy: 1, 1
+  size: 642, 120
+  orig: 642, 120
+  offset: 0, 0
+  index: -1

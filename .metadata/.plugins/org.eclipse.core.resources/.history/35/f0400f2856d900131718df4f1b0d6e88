@@ -1,0 +1,53 @@
+package com.gridstone.happykoala;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.gridstone.handlers.GameStateManager;
+import com.gridstone.screens.Splash;
+
+public class HappyKoala extends Game {
+	
+	public static final String TITLE = "Happy Koala";
+	public static final int V_WIDTH = 1280;
+	public static final int V_HEIGHT = 720;
+	public static final int SCALE = 2;
+	
+	private SpriteBatch sb;
+	private OrthographicCamera cam;
+	private OrthographicCamera hudCam;
+	
+	public static final float STEP = 1 / 30f;
+	private float accum;
+	
+	private GameStateManager gsm;
+	@Override
+	public void create() {
+		setScreen(new Splash(this));
+	}
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+	}
+
+	@Override
+	public void render() {
+		super.dispose();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+	}
+
+	@Override
+	public void pause() {
+		super.pause();
+	}
+
+	@Override
+	public void resume() {
+		super.resume();
+	}
+}

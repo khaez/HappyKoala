@@ -1,0 +1,144 @@
+package com.gridstone.happykoala;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector3;
+import com.gridstone.animals.Koala;
+import com.gridstone.animals.Koala.State;
+
+
+public class World implements Screen{
+	
+	private Game happyKoala;			//reference to controller
+	
+	private OrthographicCamera camera;	//viewport
+	private SpriteBatch world;			//to draw textures
+	
+	private Vector3 touchPoint;			//used to store touched coordinates
+	
+	private Koala koala;				//Koala
+	
+	int touched = 0;
+	
+	public World(Game g) {
+		happyKoala = g;					
+		touchPoint = new Vector3();		
+	}
+	
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0, 0, 0, 1);				//clear screen
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		float deltaTime = Gdx.graphics.getDeltaTime();
+		
+		world.setProjectionMatrix(camera.combined);
+		world.begin();
+		updateKoala(deltaTime);
+		checkInput(deltaTime);
+		//camera.position.x = koala.position.x;
+		camera.update();
+		renderKoala();
+		world.end();
+	}
+	
+	private void updateKoala(float deltaTime) {
+		//if game just started, no need to update
+		if (deltaTime == 0)
+			return;
+		//incrementing state time of koala
+		koala.setStateTime(koala.getStateTime() + deltaTime);
+	}
+	
+	private void checkInput(float deltaTime) {
+		//if screen touched OR koala not at position of previous touched coordinates
+		if(Gdx.input.justTouched() || !(touchPoint.x > koala.position.x && touchPoint.x < (koala.position.x + koala.getWidth()/2))) {
+			//if screen touched
+			if(Gdx.input.justTouched())
+			{
+				//get new touched coordinates
+				camera.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(), 0));
+				touched += 1;
+			}
+			
+			//if koala is on the ground and screen touched, Koala state change to Walking
+			if (koala.getOnGround() && Gdx.input.justTouched() && touched > 1)
+				koala.setState(State.Walking);
+			
+			//if touched coordinates is to the right of the koala, koala walks to the right
+			if((touchPoint.x > koala.position.x) && touched > 1) {
+				koala.velocity.x = koala.getMaxVelocity();
+				koala.setDirection(true);		//face right
+			}
+			//if touched coordinates is to the left of the koala, koala walks to the left
+			else if((touchPoint.x < koala.position.x) && touched > 1){
+				koala.velocity.x = -koala.getMaxVelocity();
+				koala.setDirection(false);		//face left
+			}
+			
+			koala.move(deltaTime);				//Koala moves
+		}
+		//Koala is/arrived at touched coordinates, Koala state change to Standing
+		else {
+			koala.setState(State.Standing);
+		}
+	}
+	
+	private void renderKoala() {
+		// based on the koala stateTime and state, get the animation frame
+		TextureRegion stateFrame = koala.getStateFrame();
+		
+		if (koala.getDirection())
+		{		//display facing right
+			world.draw(stateFrame, koala.position.x, koala.position.y, koala.getWidth(), koala.getHeight());
+			System.out.println(koala.position.x);
+			
+		}
+		else
+		{		//display facing left
+			world.draw(stateFrame, koala.position.x + koala.getWidth(), koala.position.y, -koala.getWidth(), koala.getHeight());
+		}
+	}
+
+
+	@Override
+	public void show() {
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, 30, 20);
+		camera.update();
+		
+		koala = new Koala();
+		
+		world = new SpriteBatch();
+	}
+
+	@Override
+	public void hide() {
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		
+	}
+
+	@Override
+	public void resume() {
+		
+	}
+
+	@Override
+	public void dispose() {
+		
+	}
+	
+	@Override
+	public void pause() {
+		
+	}
+}

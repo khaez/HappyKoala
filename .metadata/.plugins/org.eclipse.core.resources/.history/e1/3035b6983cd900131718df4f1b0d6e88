@@ -1,0 +1,5 @@
+package com.gridstone.handlers;
+
+public class GameStateManager {
+
+}
